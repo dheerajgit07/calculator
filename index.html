@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'poppins', sans-serif;
+    }
+    body{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #000000, #0f2027, #203a43, #2c5364);
+    }
+    .cal{
+        border: 1px solid #717377;
+        padding: 20px;
+        border-radius: 16px;
+        background: transparent;
+         box-shadow: 0px 3px 15px rgb(113 , 115 , 199 ,0.5);
+    }
+    input{
+        width: 320px;
+        border: none;
+        background: transparent;
+        padding: 24px;
+        margin: 10px;
+        box-shadow: 0px 3px 15px rgb(84 , 84 , 84 ,0.1);
+        font-size: 41px;
+        text-align: right;
+        /* color: white; */
+        background: #001219;
+        color: #00ffbf;
+
+    }
+    input::placeholder{
+        color: #ffff;
+
+    }
+    button{
+        border: none;
+        width: 60px;
+        height: 60px;
+        margin: 10px;
+        border-radius: 50%;
+        font-size: 20px;
+        /* background: transparent;
+        color: #ffff; */
+         box-shadow: -8px -8px 15px rgb(255 , 255 , 255 ,0.2);
+         cursor: pointer;
+         transition: 0.2s;
+         background: #001f2d;
+         color: #00ffc8;
+
+    }
+    
+ .equal{
+    background:  #fb7c14;
+ }
+
+.oprat{
+    color: #5EEAD4;
+}
+button:hover{
+    transform: scale(1.2);
+    /* background: #475569; */
+    background: #00ffc8;
+    color: #001219;
+}
+@media (max-width: 480px) {
+      #inputbox {
+        font-size: 1.6rem;
+      }
+      button {
+        font-size: 1rem;
+        padding: 15px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .calculator {
+        max-width: 400px;
+      }
+      #inputbox {
+        font-size: 2.2rem;
+      }
+    }
+
+</style>
+<body>
+   <div class="cal">
+    <input type="text" placeholder="0" id="inputbox">
+  <div>
+    <button class="oprat">AC</button>
+    <button class="oprat">DEL</button>
+    <button class="oprat">%</button>
+    <button class="oprat">/</button>
+  </div>
+  <div>
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+    <button class="oprat">*</button>
+
+  </div> <div>
+    <button>6</button>
+    <button>5</button>
+    <button>4</button>
+    <button class="oprat">-</button>
+
+  </div> <div>
+    <button>3</button>
+    <button>2</button>
+    <button>1</button>
+    <button class="oprat">+</button>
+
+  </div> <div>
+    <button>00</button>
+    <button>0</button>
+    <button>.</button>
+    <button class="equal">=</button>
+
+  </div>
+
+   </div> 
+</body>
+<script>
+
+let input = document.getElementById('inputbox');
+let buttons = document.querySelectorAll('button');
+
+let string = "";
+let arr = Array.from(buttons);
+
+arr.forEach(button => {
+  button.addEventListener('click', (e) => {
+    let value = e.target.innerHTML;
+
+    if (value === '=') {
+      try {
+        string = eval(string);
+        input.value = string;
+      } catch {
+        input.value = "Error";
+      }
+    } else if (value === 'AC') {
+      string = "";
+      input.value = string;
+    } else if (value === 'DEL') {
+      string = string.slice(0, -1);
+      input.value = string;
+    } else {
+      string += value;
+      input.value = string;
+    }
+  });
+});
+
+
+</script>
+</html>
